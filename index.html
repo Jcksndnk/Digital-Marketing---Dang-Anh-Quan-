@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AS2 E-Portfolio – The LEGO Group | Anh Quan Dang</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #2a1a10;
+    --paper: #fbf5ec;
+    --cream: #f5e8d6;
+    --rule: #d9b88a;
+    --accent: #9c3c1a;
+    --muted: #7a5a42;
+    --highlight: #c4691c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ─── HEADER ─── */
+  .site-header {
+    background: var(--accent);
+    color: #f5e0c3;
+    padding: 0;
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 40px 40px;
+  }
+  .course-tag {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #e8c38a;
+    margin-bottom: 18px;
+  }
+  .site-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .site-header .subtitle {
+    font-size: 15px;
+    color: #e8c38a;
+    font-style: italic;
+  }
+  .site-header .author-line {
+    font-size: 13px;
+    color: #e8c38a;
+    margin-top: 14px;
+    letter-spacing: .05em;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    background: var(--ink);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,.18);
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+  nav ul li a {
+    display: block;
+    padding: 14px 18px;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: .06em;
+    transition: color .2s;
+    font-family: 'Source Serif 4', serif;
+  }
+  nav ul li a:hover { color: #fff; }
+
+  /* ─── LAYOUT ─── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 56px 40px;
+  }
+
+  /* ─── ABBREVIATIONS BOX ─── */
+  .abbr-box {
+    background: var(--cream);
+    border-left: 4px solid var(--highlight);
+    padding: 32px 40px;
+    margin-bottom: 48px;
+  }
+  .abbr-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    letter-spacing: .04em;
+    margin-bottom: 20px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .abbr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 8px 24px;
+    font-size: 14.5px;
+  }
+  .abbr-grid p {
+    margin: 0;
+    line-height: 1.55;
+  }
+  .abbr-grid strong {
+    color: var(--highlight);
+    font-weight: 700;
+  }
+
+  /* ─── TOC PAGE ─── */
+  .toc-box {
+    background: var(--cream);
+    border-left: 4px solid var(--accent);
+    padding: 36px 44px;
+    margin-bottom: 56px;
+  }
+  .toc-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    letter-spacing: .04em;
+    margin-bottom: 22px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .toc-box ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+  .toc-box ol > li {
+    counter-increment: toc;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .toc-box ol > li a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .toc-box ol > li a:hover { color: var(--accent); text-decoration: underline; }
+  .toc-sub {
+    list-style: none;
+    margin: 4px 0 8px 20px;
+  }
+  .toc-sub li {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 3px;
+    color: var(--muted);
+  }
+  .toc-sub li a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .toc-sub li a:hover { color: var(--accent); text-decoration: underline; }
+
+  /* ─── SECTION HEADINGS ─── */
+  .section-divider {
+    border: none;
+    border-top: 2px solid var(--rule);
+    margin: 64px 0 0;
+  }
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--accent);
+    margin: 32px 0 8px;
+    padding-top: 8px;
+  }
+  h3.subsection-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--highlight);
+    margin: 36px 0 12px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 6px;
+  }
+  h4.nested-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 28px 0 10px;
+    letter-spacing: .01em;
+  }
+
+  /* ─── BODY TEXT ─── */
+  .body-text p {
+    margin-bottom: 18px;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  /* ─── FIGURE ─── */
+  figure {
+    margin: 32px 0;
+    text-align: center;
+  }
+  figure img {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 22px rgba(0,0,0,.12);
+    border: 1px solid var(--rule);
+    display: block;
+    margin: 0 auto;
+  }
+  .fig-placeholder {
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--cream),
+      var(--cream) 14px,
+      #ecd9b8 14px,
+      #ecd9b8 28px
+    );
+    border: 1px dashed var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 14px;
+    padding: 20px;
+    text-align: center;
+  }
+  figcaption {
+    font-style: italic;
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 10px;
+    line-height: 1.45;
+  }
+
+  /* ─── TABLE ─── */
+  .checklist-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 36px;
+    font-size: 15px;
+  }
+  .checklist-table th {
+    background: var(--accent);
+    color: #fff;
+    padding: 11px 15px;
+    text-align: left;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    letter-spacing: .03em;
+  }
+  .checklist-table td {
+    padding: 11px 15px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .checklist-table tr:nth-child(even) td {
+    background: var(--cream);
+  }
+  .score-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 9px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .table-caption {
+    font-style: italic;
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 36px;
+  }
+
+  /* ─── REFERENCES ─── */
+  .ref-list {
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+  .ref-list p {
+    margin-bottom: 12px;
+    padding-left: 22px;
+    text-indent: -22px;
+  }
+  .ref-list a {
+    color: var(--accent);
+    word-break: break-all;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    color: #888;
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    margin-top: 80px;
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 32px 20px; }
+    .header-inner { padding: 32px 20px 28px; }
+    nav ul li a { padding: 11px 11px; font-size: 12px; }
+    .toc-box { padding: 24px 20px; }
+    .abbr-box { padding: 22px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <p class="course-tag">MKT3039 · Assessment 2 · E-Portfolio</p>
+    <h1>THE LEGO GROUP<br>Digital Marketing Portfolio</h1>
+    <p class="subtitle">Engagement, social platforms, owned media &amp; emerging trends in the toy industry</p>
+    <p class="author-line">Anh Quan Dang &nbsp;·&nbsp; 25831838 &nbsp;·&nbsp; University of Northampton &nbsp;·&nbsp; April 2026</p>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#toc">Contents</a></li>
+    <li><a href="#s1">1. Ladder of Engagement</a></li>
+    <li><a href="#s2">2. Social Platform</a></li>
+    <li><a href="#s3">3. Website Evaluation</a></li>
+    <li><a href="#s4">4. Trend Analysis</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- ABBREVIATIONS -->
+  <div class="abbr-box">
+    <h2>List of Abbreviations and Acronyms</h2>
+    <div class="abbr-grid">
+      <p><strong>AFOL:</strong> Adult Fan of LEGO</p>
+      <p><strong>AR:</strong> Augmented Reality</p>
+      <p><strong>AOV:</strong> Average Order Value</p>
+      <p><strong>BNPL:</strong> Buy Now, Pay Later</p>
+      <p><strong>CX:</strong> Customer Experience</p>
+      <p><strong>DTC:</strong> Direct-to-Consumer</p>
+      <p><strong>E-E-A-T:</strong> Experience, Expertise, Authoritativeness, Trustworthiness</p>
+      <p><strong>LAN:</strong> LEGO Ambassador Network</p>
+      <p><strong>LCP:</strong> Largest Contentful Paint</p>
+      <p><strong>QR:</strong> Quick Response (code)</p>
+      <p><strong>RACE:</strong> Reach, Act, Convert, Engage</p>
+      <p><strong>UGC:</strong> User-Generated Content</p>
+      <p><strong>UK:</strong> United Kingdom</p>
+      <p><strong>URL:</strong> Uniform Resource Locator</p>
+      <p><strong>UX:</strong> User Experience</p>
+      <p><strong>WebAR:</strong> Web-based Augmented Reality</p>
+    </div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div id="toc" class="toc-box">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s1">The Ladder of Engagement</a>
+        <ul class="toc-sub">
+          <li><a href="#s1-1">1.1 Introduction and Theoretical Framing</a></li>
+          <li><a href="#s1-2">1.2 LEGO's "Community-First" Strategy</a></li>
+          <li><a href="#s1-3">1.3 Evidence Across the Rungs of Engagement</a></li>
+          <li><a href="#s1-4">1.4 Critical Reflection on the Model</a></li>
+        </ul>
+      </li>
+      <li><a href="#s2">Evaluation of Social Platform</a>
+        <ul class="toc-sub">
+          <li><a href="#s2-1">2.1 Introduction and Platform Selection</a></li>
+          <li><a href="#s2-2">2.2 Application of the Four Zones to LEGO on TikTok</a></li>
+        </ul>
+      </li>
+      <li><a href="#s3">Website Evaluation</a>
+        <ul class="toc-sub">
+          <li><a href="#s3-1">3.1 Introduction and Evaluation Method</a></li>
+          <li><a href="#s3-2">3.2 Evaluation Checklist</a></li>
+          <li><a href="#s3-3">3.3 Analysis Against Chaffey &amp; Ellis-Chadwick's Three Strategic Objectives</a></li>
+        </ul>
+      </li>
+      <li><a href="#s4">Trend Analysis – AR &amp; the Connected Physical Product</a>
+        <ul class="toc-sub">
+          <li><a href="#s4-1">4.1 Introduction and Trend Identification</a></li>
+          <li><a href="#s4-2">4.2 Analysis Against the RACE Framework</a></li>
+          <li><a href="#s4-3">4.3 Strategic Implications and Risks</a></li>
+        </ul>
+      </li>
+      <li><a href="#references">References</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1 -->
+  <hr class="section-divider">
+  <h2 class="section-title" id="s1">1. The Ladder of Engagement</h2>
+
+  <h3 class="subsection-title" id="s1-1">1.1 Introduction and Theoretical Framing</h3>
+
+  <div class="body-text">
+    <p>The LEGO Group, a family-owned Danish toy manufacturer, has long been regarded in academic and industry literature as a benchmark for consumer co-creation (Antorini, Muñiz and Askildsen, 2012). This entry applies Smith and Zook's (2016) Ladder of Engagement to evaluate how LEGO.com and its associated digital properties move consumers from passive observation toward active collaboration. The framework is used because it explicitly sequences customer participation from low-effort interactions (ratings and reviews) to high-effort partnership (co-creation), which allows a structured assessment of each digital touchpoint against a defined level of engagement intensity.</p>
+    <p>To avoid the common pitfall of framework application, it is important to recognise that Smith and Zook's (2016) model was developed before short-form video platforms matured, and therefore treats engagement rungs as relatively stable categories. This entry applies the model as a diagnostic tool rather than a prescriptive hierarchy, acknowledging that not every customer will climb every rung (Hollebeek, Glynn and Brodie, 2014).</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 1: The Ladder of Engagement (adapted from Smith and Zook, 2016).</em></figcaption>
+  </figure>
+
+  <h3 class="subsection-title" id="s1-2">1.2 LEGO's "Community-First" Strategy</h3>
+
+  <div class="body-text">
+    <p>LEGO treats its most engaged fans not as an audience but as an extension of its research and development function. The canonical academic account of this approach (Antorini, Muñiz and Askildsen, 2012) documents how LEGO moved from a closed innovation model in the 1990s—publicly stating it would not accept unsolicited ideas—to an open collaboration model after observing that its adult fan base was already modifying and redistributing its products. This shift reflects the broader service-dominant logic proposed by Vargo and Lusch (2004), in which value is co-created between firm and customer rather than delivered unilaterally.</p>
+    <p>The strategic rationale is grounded in brand community theory. Muñiz and O'Guinn (2001) established that a brand community is a specialised, non-geographically bound community based on a structured set of social relationships among admirers of a brand. Communities such as the Adult Fans of LEGO (AFOL) network provide the firm with three assets identified in subsequent brand community research (Schau, Muñiz and Arnould, 2009): social networking (peer introduction and welcoming), impression management (brand advocacy), and community engagement (documenting and staking milestones). Each of these maps onto a rung of the Smith and Zook (2016) ladder, as analysed below.</p>
+  </div>
+
+  <h3 class="subsection-title" id="s1-3">1.3 Evidence Across the Rungs of Engagement</h3>
+
+  <h4 class="nested-title">1.3.1 Rungs 1 and 2: Ratings and Reviews</h4>
+
+  <div class="body-text">
+    <p>The foundational rungs of the ladder—ratings and reviews—are operationalised on LEGO.com through a structured evaluation interface. Rather than a single-field comment box, the review form asks customers to score three specific dimensions: Play Experience, Building Experience, and Value for Money, in addition to an overall star rating. This structure reflects the recommendation in Nielsen Norman Group's research on e-commerce product pages, which argues that category-specific ratings produce more actionable data than single overall scores (Sherwin, 2019).</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 1.1: Structured review form on LEGO.com showing separate scales for Play Experience, Building Experience, and Value for Money (LEGO, 2026a).</em></figcaption>
+  </figure>
+
+  <h4 class="nested-title">1.3.2 Rung 3: Discussions (Community-Led Dialogue)</h4>
+
+  <div class="body-text">
+    <p>Peer-to-peer discussion is formalised through the LEGO Ambassador Network (LAN). The LAN grants recognised AFOL communities a direct communication channel with LEGO's AFOL Engagement Team, and certain communities receive early access to review copies of sets (LEGO, 2022). This model illustrates what Antorini, Muñiz and Askildsen (2012) describe as LEGO's practice of distinguishing between "recognised" and "unrecognised" communities—a governance structure that sets clear expectations without imposing corporate control on conversation.</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 1.2: Official LEGO Ambassador Network thread describing the community recognition process (LEGO, 2022).</em></figcaption>
+  </figure>
+
+  <h4 class="nested-title">1.3.3 Rungs 4 and 5: Ideas and Advocacy (Market Validation)</h4>
+
+  <div class="body-text">
+    <p>LEGO Ideas allows any user to submit a product concept; if a submission attracts 10,000 supporters within defined timeframes, it advances to an internal review stage, and a successful project is commercialised as an official set (LEGO Ideas, 2024). This operates as both a crowdsourcing mechanism and a form of pre-launch market validation: supporter counts provide observable evidence of latent demand before any tooling or manufacturing commitment is made, which aligns with Ogawa and Piller's (2006) argument that engaging lead users reduces new product development risk.</p>
+    <p>It is important not to overstate this effect. The LEGO Group does not publish comparative sell-through data for Ideas sets versus internally designed sets, and the majority of submitted projects do not pass the internal review stage even after crossing the 10,000-supporter threshold, as shown by the "Gilmore Girls: Stars Hollow" example below. The mechanism therefore reduces launch risk on selected sets rather than guaranteeing commercial success (Antorini, Muñiz and Askildsen, 2012).</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 1.3: LEGO Ideas submission page for "Gilmore Girls: Stars Hollow" showing the 10,000-supporter threshold and an example of an idea that advanced to review but was not selected for production.</em></figcaption>
+  </figure>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 1.4: The same fan-designed concept, illustrating the community-led nature of submissions on LEGO Ideas.</em></figcaption>
+  </figure>
+
+  <h4 class="nested-title">1.3.4 Rung 6: Collaborative Co-Creation (Formalised Partnership)</h4>
+
+  <div class="body-text">
+    <p>The highest rung—co-creation—is formalised through contractual terms rather than informal recognition. Under the LEGO Ideas Product Idea Guidelines, a successful fan designer receives a royalty of 1% of the net sales of the commercialised product, ten complimentary copies of the final set, and named credit on the product packaging and associated marketing materials (LEGO Ideas, 2024). This structure provides a public signal of partnership and a measurable financial return, and it illustrates what Prahalad and Ramaswamy (2004) describe as a value-exchange relationship in which the consumer becomes a co-creator of value rather than a recipient of it.</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 1.5: Packaging of LEGO Ideas set #21336 ("The Office"), which credits the fan designer on the physical box as required under the LEGO Ideas Product Idea Guidelines (LEGO Ideas, 2024).</em></figcaption>
+  </figure>
+
+  <h3 class="subsection-title" id="s1-4">1.4 Critical Reflection on the Model</h3>
+
+  <div class="body-text">
+    <p>Applying the ladder to LEGO reveals two limitations worth noting. First, the model is sequential in appearance but not in practice: most LEGO customers engage at rungs one to three and never progress higher, which is consistent with participation inequality observed across branded online communities (Hollebeek, Glynn and Brodie, 2014). Second, the ladder captures depth of engagement but not its quality; a fan who complains loudly at the discussion rung may generate more strategic value than a silent fan who has climbed to co-creation. These limitations do not invalidate the framework but suggest it is best used alongside complementary engagement measures rather than as a standalone diagnostic.</p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <hr class="section-divider">
+  <h2 class="section-title" id="s2">2. Evaluation of Social Platform</h2>
+
+  <h3 class="subsection-title" id="s2-1">2.1 Introduction and Platform Selection</h3>
+
+  <div class="body-text">
+    <p>This entry evaluates LEGO's presence on TikTok using Tuten and Solomon's (2018) Four Zones of Social Media. TikTok is selected because it has become the most downloaded mobile application globally across multiple recent years (Statista, 2024) and because its algorithmic, interest-based feed differs structurally from the follower-based feeds of earlier platforms. This structural difference matters for a brand like LEGO: recommendation-driven distribution can deliver content to users who have not previously interacted with the brand, which creates opportunities and constraints that are distinct from those of Facebook or Instagram (Kaplan and Haenlein, 2010).</p>
+    <p>Tuten and Solomon's (2018) framework is applied because it treats social media as four interlocking functional zones rather than as a single medium, which allows each of LEGO's activities to be examined against the purpose it is designed to serve. The limitations of applying a published framework to a newer platform are acknowledged: the Four Zones model predates the dominance of short-form algorithmic video, and the analysis below adapts rather than mechanically applies its categories.</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 2: The Four Zones of Social Media (adapted from Tuten and Solomon, 2018).</em></figcaption>
+  </figure>
+
+  <h3 class="subsection-title" id="s2-2">2.2 Application of the Four Zones to LEGO on TikTok</h3>
+
+  <h4 class="nested-title">2.2.1 Zone 1: Social Community</h4>
+
+  <div class="body-text">
+    <p>The Social Community zone concerns relationships, conversation and shared identity (Tuten and Solomon, 2018). LEGO's official TikTok account (@lego) uses the platform's native reply and Stitch functions to respond to named individual comments with dedicated video posts, which converts one-to-one interactions into public, sharable artefacts. This practice is consistent with the finding of Schau, Muñiz and Arnould (2009) that recognised and reciprocated communication from a brand strengthens community identification. It should be noted that this is a communication practice rather than a proven driver of sales; its immediate benefit is reputational and relational rather than transactional.</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 2.1: A LEGO TikTok video-reply to a comment from Marie Claire UK, illustrating reciprocal brand–consumer interaction in the Social Community zone (LEGO, 2026b).</em></figcaption>
+  </figure>
+
+  <h4 class="nested-title">2.2.2 Zone 2: Social Publishing</h4>
+
+  <div class="body-text">
+    <p>The Social Publishing zone concerns the creation and distribution of content (Tuten and Solomon, 2018). LEGO's published content on TikTok falls into three recurring formats: stop-motion animations, time-lapse builds, and behind-the-scenes studio footage. The account's pinned content shows individual posts with view counts in the millions, which indicates that the content is performing well on a platform where reach is distributed algorithmically rather than by follower size (LEGO, 2026b). Ashley and Tuten (2015) found that branded content emphasising functional demonstration and creative message strategies generates higher consumer engagement than purely promotional content, which is consistent with LEGO's observed approach.</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 2.2: A LEGO behind-the-scenes stop-motion post on TikTok, exemplifying the Social Publishing zone (LEGO, 2026b).</em></figcaption>
+  </figure>
+
+  <h4 class="nested-title">2.2.3 Zone 3: Social Entertainment</h4>
+
+  <div class="body-text">
+    <p>The Social Entertainment zone covers branded play, games and immersive content (Tuten and Solomon, 2018). LEGO's most visible activity in this zone is its partnership with Epic Games on LEGO Fortnite, a survival-crafting mode inside Fortnite launched in December 2023 that uses LEGO-styled characters and building mechanics (Epic Games, 2023). LEGO's TikTok account promotes the game through gameplay clips and cross-promotional content, which is consistent with the branded entertainment strategy described by Hudson and Hudson (2006), who argue that entertainment-embedded brands are more effective than standalone advertisements at creating sustained attention. The strategic caution here is dependency: the reach of this activation is contingent on a third-party platform, so the activation produces returns only as long as the underlying partnership and player base remain active.</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 2.3: Promotional imagery for LEGO Fortnite, the principal LEGO activation in the Social Entertainment zone (Epic Games, 2023).</em></figcaption>
+  </figure>
+
+  <h4 class="nested-title">2.2.4 Zone 4: Social Commerce</h4>
+
+  <div class="body-text">
+    <p>The Social Commerce zone covers retail and revenue-oriented activity on social platforms (Tuten and Solomon, 2018). LEGO's approach on TikTok is deliberately indirect: rather than using in-app TikTok Shop checkout, the profile uses a single link (lego.build/LEGOTikTok) that redirects to LEGO.com. This design choice keeps customer data, checkout experience and loyalty enrolment inside LEGO-owned infrastructure. Verhoef, Kannan and Inman (2015) argue that brands pursuing a controlled omni-channel strategy benefit from retaining ownership of customer data and consistent experience across touchpoints; LEGO's link-out structure is consistent with that logic. The trade-off is friction: every additional click between intent and checkout reduces conversion probability, so the decision to forgo native checkout reflects a prioritisation of data ownership over conversion rate optimisation.</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 2.4 (part 1): LEGO's TikTok profile showing the lego.build/LEGOTikTok link-out (LEGO, 2026b).</em></figcaption>
+  </figure>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 2.4 (part 2): The destination after the link-out: LEGO.com's mobile experience, which preserves data ownership at the cost of native in-app checkout (LEGO, 2026a).</em></figcaption>
+  </figure>
+
+  <!-- SECTION 3 -->
+  <hr class="section-divider">
+  <h2 class="section-title" id="s3">3. Website Evaluation</h2>
+
+  <h3 class="subsection-title" id="s3-1">3.1 Introduction and Evaluation Method</h3>
+
+  <div class="body-text">
+    <p>This entry evaluates LEGO.com against a structured checklist of e-commerce usability criteria. The checklist draws on three established sources: the Nielsen Norman Group's usability research on e-commerce product pages (Sherwin, 2019), the Baymard Institute's large-scale checkout usability research (Baymard Institute, 2024), and Chaffey and Ellis-Chadwick's (2022) framework on digital marketing strategy, which organises website effectiveness around the objectives of customer acquisition, retention and loyalty.</p>
+    <p>Each criterion is scored on a five-point scale, where 5 indicates "meets or exceeds best practice as defined in the cited source" and 1 indicates "substantially below best practice". The scores are interpretive rather than the output of quantitative testing; they are based on direct inspection of the live site in April 2026 and on the benchmarks in the cited sources. This limitation is acknowledged: a more rigorous study would include moderated user testing and automated performance measurement.</p>
+  </div>
+
+  <h3 class="subsection-title" id="s3-2">3.2 Evaluation Checklist</h3>
+
+  <table class="checklist-table">
+    <thead>
+      <tr>
+        <th>Criterion</th>
+        <th>Benchmark Source</th>
+        <th>Score</th>
+        <th>Evidence and Analysis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Site navigation</td>
+        <td>Nielsen Norman Group (Laubheimer, 2022)</td>
+        <td><span class="score-badge">4.5/5</span></td>
+        <td>A persistent top-level "mega-menu" is organised by Shop, Discover and Help, with filters for Age, Theme, Interest and Price. The menu meets the Nielsen Norman Group guideline of predictable, scannable groupings; the main residual issue is depth on smaller mobile viewports.</td>
+      </tr>
+      <tr>
+        <td>Product information quality</td>
+        <td>Nielsen Norman Group (Sherwin, 2019)</td>
+        <td><span class="score-badge">5.0/5</span></td>
+        <td>Product pages include structured specifications (piece count, age, dimensions), high-resolution imagery, lifestyle photography, and downloadable building instructions. This matches the NNG recommendation that product pages answer questions before the user has to ask them.</td>
+      </tr>
+      <tr>
+        <td>Checkout flow</td>
+        <td>Baymard Institute (2024)</td>
+        <td><span class="score-badge">4.5/5</span></td>
+        <td>A guided, multi-step checkout with inline validation and an explicit guest-checkout option. This aligns with the Baymard Institute guideline that a clear guest option reduces abandonment; a single-page consolidated option would further reduce friction for returning users.</td>
+      </tr>
+      <tr>
+        <td>Payment options</td>
+        <td>Baymard Institute (2024)</td>
+        <td><span class="score-badge">5.0/5</span></td>
+        <td>Credit and debit card, PayPal, Apple Pay, Google Pay and the Klarna Buy Now, Pay Later option are all available at checkout. This spread covers the payment methods cited by the Baymard Institute as the most impactful for cart completion in higher-ticket e-commerce.</td>
+      </tr>
+      <tr>
+        <td>Trust and credibility</td>
+        <td>Google E-E-A-T (Google, 2023)</td>
+        <td><span class="score-badge">5.0/5</span></td>
+        <td>The site displays verified-buyer reviews, clear returns and delivery policies, and corporate social-responsibility reporting. External validation is provided by LEGO's ranking as the most reputable company in the world in the 2026 Global RepTrak 100 (LEGO, 2026c; RepTrak, 2026).</td>
+      </tr>
+      <tr>
+        <td>Performance and speed</td>
+        <td>Google Core Web Vitals (Google, 2024)</td>
+        <td><span class="score-badge">3.5/5</span></td>
+        <td>High-resolution product imagery and 3D preview assets are core to the brand experience but introduce load on slower mobile connections. A formal Core Web Vitals audit was not conducted; this score is an observational judgement and is the area most open to improvement.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="table-caption"><em>Table 3.1: Evaluation of LEGO.com against established e-commerce usability benchmarks.</em></p>
+
+  <h3 class="subsection-title" id="s3-3">3.3 Analysis Against Chaffey and Ellis-Chadwick's Three Strategic Objectives</h3>
+
+  <h4 class="nested-title">3.3.1 Customer Acquisition</h4>
+
+  <div class="body-text">
+    <p>Acquisition is supported by targeted audience segmentation on the homepage. The "Adults Welcome" section uses darker, minimalist visual design and aspirational category tiles ("Art, Design &amp; Music"; "Science &amp; Tech") that differ markedly from the vivid, gamified treatment used in the children's section. This separation reflects Chaffey and Ellis-Chadwick's (2022) argument that segmentation is a foundational step in digital strategy; without it, a generalist landing page dilutes relevance for every audience.</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 3.1: A category carousel on the LEGO.com homepage, used to direct traffic into segmented interest paths (LEGO, 2026a).</em></figcaption>
+  </figure>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 3.2: The "Adults Welcome" section, a distinct editorial space targeting the AFOL segment.</em></figcaption>
+  </figure>
+
+  <h4 class="nested-title">3.3.2 Customer Retention</h4>
+
+  <div class="body-text">
+    <p>Retention is driven by the LEGO Insiders programme, which is integrated into the purchase flow rather than offered as a separate membership page. Points earned are displayed on each product page (see Figure 3.3), and physical sets can be registered via QR codes inside building instructions to credit the buyer's account. Reichheld and Schefter (2000) established that small increases in retention rate produce disproportionately large increases in long-term profitability for online businesses; Insiders is the mechanism through which LEGO operationalises that principle by giving returning users a visible, persistent reason to remain logged in.</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 3.3: A LEGO.com product page for the "Vincent van Gogh – The Starry Night" set, showing the Insiders points-earned field in the purchase panel (LEGO, 2026a).</em></figcaption>
+  </figure>
+
+  <h4 class="nested-title">3.3.3 Customer Loyalty</h4>
+
+  <div class="body-text">
+    <p>Long-term loyalty is reinforced by high-utility service pages. "Bricks and Pieces" is a searchable catalogue of individual LEGO elements that allows customers to order replacement parts for sets they already own. This functionality extends the customer relationship past the initial purchase and reduces post-purchase dissonance, which Oliver (1999) identified as a key antecedent of repurchase intention. The strategic importance of this page is less about direct revenue and more about the signal it sends: a firm that sells the individual brick reassures the customer that an expensive set is not a single-point-of-failure purchase.</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 3.4: The "Bricks and Pieces" spare-parts interface on LEGO.com, which supports long-term product ownership (LEGO, 2026a).</em></figcaption>
+  </figure>
+
+  <!-- SECTION 4 -->
+  <hr class="section-divider">
+  <h2 class="section-title" id="s4">4. Trend Analysis – Augmented Reality and the Connected Physical Product</h2>
+
+  <h3 class="subsection-title" id="s4-1">4.1 Introduction and Trend Identification</h3>
+
+  <div class="body-text">
+    <p>The trend examined in this entry is the integration of augmented reality (AR) into physical consumer products, and the use of QR codes and companion apps to connect a physical item to a persistent digital experience. Rauschnabel et al. (2022) define AR marketing as a novel, potentially disruptive sub-discipline that integrates virtual content into a consumer's real-world environment and argue that it is reshaping consumer journeys from early-stage awareness through to post-purchase retention. The relevance of this trend to LEGO is direct: as a physical toy manufacturer competing for the attention of children and adults who increasingly spend discretionary time on screens, LEGO's response to AR is central to its long-term positioning.</p>
+    <p>The analysis is structured using Chaffey and Ellis-Chadwick's (2022) RACE framework (Reach, Act, Convert, Engage) because it links each stage of the customer lifecycle to specific, measurable digital activities. RACE is used here as a diagnostic scaffold; the framework's limitations, particularly its linear treatment of customer journeys, are acknowledged, and the analysis draws on Lemon and Verhoef's (2016) more recent conceptualisation of the customer experience as a non-linear, iterative process.</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 4: The RACE Planning Framework (adapted from Chaffey and Ellis-Chadwick, 2022).</em></figcaption>
+  </figure>
+
+  <h3 class="subsection-title" id="s4-2">4.2 Analysis Against the RACE Framework</h3>
+
+  <h4 class="nested-title">4.2.1 Reach: Using AR to Generate Awareness</h4>
+
+  <div class="body-text">
+    <p>Reach concerns building awareness and driving traffic (Chaffey and Ellis-Chadwick, 2022). LEGO's most substantial AR product launch to date was LEGO Hidden Side, introduced at the American International Toy Fair in 2019, which was described at launch as the first LEGO play theme designed as a service—that is, where the AR app layer is intended to evolve continuously after the physical set is sold (LEGO, 2019). Although the Hidden Side theme has since been discontinued, its launch demonstrated the awareness-generation potential of AR: the novelty of the combined physical-and-digital format generated significant trade press coverage and earned media, producing reach that would have been costly to purchase through paid advertising. Rauschnabel, Felix and Hinsch (2019) found that AR applications generate brand attitude uplift through inspiration rather than through utilitarian value alone, which is consistent with the editorial coverage Hidden Side attracted.</p>
+  </div>
+
+  <figure>
+    <div class="fig-placeholder">[Insert figure image here]</div>
+    <figcaption><em>Figure 4.1: Marketing imagery for a LEGO set incorporating AR overlays, illustrating how camera-based interaction extends the physical product (LEGO, 2026a).</em></figcaption>
+  </figure>
+
+  <h4 class="nested-title">4.2.2 Act: Encouraging Interaction Through Camera-Based Engagement</h4>
+
+  <div class="body-text">
+    <p>Act concerns persuading visitors to interact with the brand on their first visit (Chaffey and Ellis-Chadwick, 2022). AR supports this stage by converting a passive product image into an interactive, context-specific preview. Hilken et al. (2017) found that AR-based virtual try-before-you-buy experiences increase decision comfort and reduce perceived purchase risk, particularly for high-ticket or space-sensitive items; the relevance to LEGO is that large display-oriented sets, such as the Star Wars Ultimate Collector Series, are precisely the category for which AR previewing (projecting a 1:1 scale model into the customer's living space) would reduce hesitation to purchase. The strategic question is therefore not whether to offer AR but where in the journey to place it: offered too early it is a novelty; offered at the decision point, it becomes a conversion tool.</p>
+  </div>
+
+  <h4 class="nested-title">4.2.3 Convert: Reducing Friction Through QR Integration</h4>
+
+  <div class="body-text">
+    <p>Convert concerns turning intent into a completed transaction (Chaffey and Ellis-Chadwick, 2022). Printed QR codes on packaging and inside building instructions provide a direct mobile-optimised link from a physical touchpoint to a specific LEGO.com destination—often to the Insiders registration flow or to a related set's product page. This mechanism, which Rauschnabel et al. (2022) describe as an example of camera-based "bridging" between physical and digital environments, captures first-party data at the moment of highest engagement (immediately after a build is completed) and does so without reliance on third-party retailers or advertising platforms. The caution is that QR-based pathways are only as valuable as the destinations they lead to: poorly optimised landing pages convert a bridging mechanism back into friction.</p>
+  </div>
+
+  <h4 class="nested-title">4.2.4 Engage: Sustained Relationships Through the Digital Layer</h4>
+
+  <div class="body-text">
+    <p>Engage concerns developing long-term customer relationships (Chaffey and Ellis-Chadwick, 2022). The persistent digital layer attached to a physical product, whether through AR, a companion app, or a loyalty QR code, extends the customer relationship beyond the single transaction. This is consistent with Lemon and Verhoef's (2016) argument that customer experience is best understood as an iterative journey rather than a linear funnel, and with Hinsch, Felix and Rauschnabel's (2020) finding that AR-based experiences generate stronger brand attachment when they evoke nostalgia and meaningful association rather than novelty alone. For LEGO, whose adult segment is substantially driven by nostalgia for the brand (Antorini, Muñiz and Askildsen, 2012), this is a natural strategic fit.</p>
+  </div>
+
+  <h3 class="subsection-title" id="s4-3">4.3 Strategic Implications and Risks</h3>
+
+  <div class="body-text">
+    <p>The trend presents three clear opportunities for LEGO. First, AR and QR infrastructure allow the firm to capture first-party data from customers who purchased through third-party retailers, partially offsetting the data loss inherent in non-direct distribution. Second, the persistent digital layer extends product lifespan from a one-time event to a repeat touchpoint. Third, AR experiences are well-suited to the nostalgia-driven adult segment, which has grown to become a material share of LEGO's overall revenue.</p>
+    <p>Three risks warrant equal attention. First, AR experiences that feel bolted-on rather than integrated into play can damage brand perception, as discussed by Fast Company coverage of the original Hidden Side launch (Wilson, 2019), and this risk is not reduced by technical sophistication alone. Second, dependence on mobile operating-system permissions (camera access, app store policies) means that parts of the experience are controlled by third parties. Third, children's privacy regulation—particularly the US Children's Online Privacy Protection Act and the UK Age Appropriate Design Code—imposes strict requirements on any camera-based experience directed at under-13 users, which raises the compliance cost of any AR-enabled product aimed at the core children's market.</p>
+  </div>
+
+  <!-- REFERENCES -->
+  <hr class="section-divider">
+  <h2 class="section-title" id="references">References</h2>
+
+  <div class="ref-list">
+    <p>Antorini, Y.M., Muñiz, A.M., Jr. and Askildsen, T. (2012) 'Collaborating with customer communities: lessons from the LEGO Group', <em>MIT Sloan Management Review</em>, 53(3), pp. 73–79.</p>
+
+    <p>Ashley, C. and Tuten, T. (2015) 'Creative strategies in social media marketing: an exploratory study of branded social content and consumer engagement', <em>Psychology &amp; Marketing</em>, 32(1), pp. 15–27. doi: 10.1002/mar.20761.</p>
+
+    <p>Baymard Institute (2024) <em>E-commerce checkout usability: 2024 benchmark report</em>. Available at: <a href="https://baymard.com/research/checkout-usability">https://baymard.com/research/checkout-usability</a>.</p>
+
+    <p>Chaffey, D. and Ellis-Chadwick, F. (2022) <em>Digital marketing: strategy, implementation and practice</em>. 8th edn. Harlow: Pearson Education.</p>
+
+    <p>Epic Games (2023) <em>LEGO Fortnite is available now</em>. Available at: <a href="https://www.fortnite.com/news/lego-fortnite-is-available-now">https://www.fortnite.com/news/lego-fortnite-is-available-now</a>.</p>
+
+    <p>Google (2023) <em>Search quality rater guidelines: an overview</em>. Available at: <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">https://developers.google.com/search/docs/fundamentals/creating-helpful-content</a>.</p>
+
+    <p>Google (2024) <em>Core Web Vitals</em>. Available at: <a href="https://web.dev/articles/vitals">https://web.dev/articles/vitals</a>.</p>
+
+    <p>Hilken, T., de Ruyter, K., Chylinski, M., Mahr, D. and Keeling, D.I. (2017) 'Augmenting the eye of the beholder: exploring the strategic potential of augmented reality to enhance online service experiences', <em>Journal of the Academy of Marketing Science</em>, 45(6), pp. 884–905. doi: 10.1007/s11747-017-0541-x.</p>
+
+    <p>Hinsch, C., Felix, R. and Rauschnabel, P.A. (2020) 'Nostalgia beats the wow-effect: inspiration, awe and meaningful associations in augmented reality marketing', <em>Journal of Retailing and Consumer Services</em>, 53, article 101987. doi: 10.1016/j.jretconser.2019.101987.</p>
+
+    <p>Hollebeek, L.D., Glynn, M.S. and Brodie, R.J. (2014) 'Consumer brand engagement in social media: conceptualization, scale development and validation', <em>Journal of Interactive Marketing</em>, 28(2), pp. 149–165. doi: 10.1016/j.intmar.2013.12.002.</p>
+
+    <p>Hudson, S. and Hudson, D. (2006) 'Branded entertainment: a new advertising technique or product placement in disguise?', <em>Journal of Marketing Management</em>, 22(5–6), pp. 489–504. doi: 10.1362/026725706777978703.</p>
+
+    <p>Kaplan, A.M. and Haenlein, M. (2010) 'Users of the world, unite! The challenges and opportunities of social media', <em>Business Horizons</em>, 53(1), pp. 59–68. doi: 10.1016/j.bushor.2009.09.003.</p>
+
+    <p>Laubheimer, P. (2022) <em>Mega menus work well for site navigation</em>. Nielsen Norman Group. Available at: <a href="https://www.nngroup.com/articles/mega-menus-work-well/">https://www.nngroup.com/articles/mega-menus-work-well/</a>.</p>
+
+    <p>LEGO (2019) <em>The LEGO Group introduces LEGO Hidden Side</em>. Available at: <a href="https://www.lego.com/en-us/aboutus/news/2019/february/lego-group-introduces-lego-hidden-side">https://www.lego.com/en-us/aboutus/news/2019/february/lego-group-introduces-lego-hidden-side</a>.</p>
+
+    <p>LEGO (2022) <em>Thoughts on the Community Ambassador role</em>. LEGO Ambassador Network. Available at: <a href="https://lan.lego.com/news/overview/thoughts-on-the-community-ambassador-role-r312/">https://lan.lego.com/news/overview/thoughts-on-the-community-ambassador-role-r312/</a>.</p>
+
+    <p>LEGO (2026a) <em>LEGO.com: official LEGO shop</em>. Available at: <a href="https://www.lego.com">https://www.lego.com</a>.</p>
+
+    <p>LEGO (2026b) <em>@lego: official LEGO TikTok channel</em>. Available at: <a href="https://www.tiktok.com/@lego">https://www.tiktok.com/@lego</a>.</p>
+
+    <p>LEGO (2026c) <em>LEGO ranked most reputable company in the world for 4th year running</em>. Available at: <a href="https://www.lego.com/en-gb/aboutus/news/2026/april/the-lego-group-ranked-most-reputable-company-in-the-world-for-the-fourth-year-running">https://www.lego.com/en-gb/aboutus/news/2026/april/the-lego-group-ranked-most-reputable-company-in-the-world-for-the-fourth-year-running</a>.</p>
+
+    <p>LEGO Ideas (2024) <em>Product idea guidelines</em>. Available at: <a href="https://ideas.lego.com/guidelines">https://ideas.lego.com/guidelines</a>.</p>
+
+    <p>Lemon, K.N. and Verhoef, P.C. (2016) 'Understanding customer experience throughout the customer journey', <em>Journal of Marketing</em>, 80(6), pp. 69–96. doi: 10.1509/jm.15.0420.</p>
+
+    <p>Muñiz, A.M., Jr. and O'Guinn, T.C. (2001) 'Brand community', <em>Journal of Consumer Research</em>, 27(4), pp. 412–432. doi: 10.1086/319618.</p>
+
+    <p>Ogawa, S. and Piller, F.T. (2006) 'Reducing the risks of new product development', <em>MIT Sloan Management Review</em>, 47(2), pp. 65–71.</p>
+
+    <p>Oliver, R.L. (1999) 'Whence consumer loyalty?', <em>Journal of Marketing</em>, 63(4 suppl. 1), pp. 33–44. doi: 10.1177/00222429990634s105.</p>
+
+    <p>Pears, R. and Shields, G. (2025) <em>Cite them right: the essential referencing guide</em>. 13th edn. London: Bloomsbury Academic.</p>
+
+    <p>Prahalad, C.K. and Ramaswamy, V. (2004) 'Co-creation experiences: the next practice in value creation', <em>Journal of Interactive Marketing</em>, 18(3), pp. 5–14. doi: 10.1002/dir.20015.</p>
+
+    <p>Rauschnabel, P.A., Felix, R. and Hinsch, C. (2019) 'Augmented reality marketing: how mobile AR-apps can improve brands through inspiration', <em>Journal of Retailing and Consumer Services</em>, 49, pp. 43–53. doi: 10.1016/j.jretconser.2019.03.004.</p>
+
+    <p>Rauschnabel, P.A., Babin, B.J., tom Dieck, M.C., Krey, N. and Jung, T. (2022) 'What is augmented reality marketing? Its definition, complexity, and future', <em>Journal of Business Research</em>, 142, pp. 1140–1150. doi: 10.1016/j.jbusres.2021.12.084.</p>
+
+    <p>Reichheld, F.F. and Schefter, P. (2000) 'E-loyalty: your secret weapon on the web', <em>Harvard Business Review</em>, 78(4), pp. 105–113.</p>
+
+    <p>RepTrak (2026) <em>2026 Global RepTrak 100</em>. Available at: <a href="https://www.reptrak.com/globalreptrak/">https://www.reptrak.com/globalreptrak/</a>.</p>
+
+    <p>Schau, H.J., Muñiz, A.M., Jr. and Arnould, E.J. (2009) 'How brand community practices create value', <em>Journal of Marketing</em>, 73(5), pp. 30–51. doi: 10.1509/jmkg.73.5.30.</p>
+
+    <p>Sherwin, K. (2019) <em>UX guidelines for ecommerce product pages</em>. Nielsen Norman Group. Available at: <a href="https://www.nngroup.com/articles/ecommerce-product-pages/">https://www.nngroup.com/articles/ecommerce-product-pages/</a>.</p>
+
+    <p>Smith, P.R. and Zook, Z. (2016) <em>Marketing communications: offline and online integration, engagement and analytics</em>. 6th edn. London: Kogan Page.</p>
+
+    <p>Statista (2024) <em>Most downloaded mobile apps worldwide</em>. Available at: <a href="https://www.statista.com/statistics/1285960/top-downloaded-mobile-apps-worldwide/">https://www.statista.com/statistics/1285960/top-downloaded-mobile-apps-worldwide/</a>.</p>
+
+    <p>Tuten, T.L. and Solomon, M.R. (2018) <em>Social media marketing</em>. 3rd edn. London: SAGE Publications.</p>
+
+    <p>Vargo, S.L. and Lusch, R.F. (2004) 'Evolving to a new dominant logic for marketing', <em>Journal of Marketing</em>, 68(1), pp. 1–17. doi: 10.1509/jmkg.68.1.1.24036.</p>
+
+    <p>Verhoef, P.C., Kannan, P.K. and Inman, J.J. (2015) 'From multi-channel retailing to omni-channel retailing: introduction to the special issue on multi-channel retailing', <em>Journal of Retailing</em>, 91(2), pp. 174–181. doi: 10.1016/j.jretai.2015.02.005.</p>
+
+    <p>Wilson, M. (2019) 'Lego is betting on the wrong future', <em>Fast Company</em>, 14 February. Available at: <a href="https://www.fastcompany.com/90305260/lego-is-betting-on-the-wrong-future">https://www.fastcompany.com/90305260/lego-is-betting-on-the-wrong-future</a> (Accessed: 23 April 2026).</p>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Anh Quan Dang &nbsp;·&nbsp; Student ID 25831838 &nbsp;·&nbsp; MKT3039 Assessment 2 &nbsp;·&nbsp; University of Northampton
+</footer>
+
+</body>
+</html>
